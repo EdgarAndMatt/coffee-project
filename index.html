@@ -11,6 +11,7 @@
 <form>
     <label for="roast-selection">Roast</label>
     <select id="roast-selection">
+        <option>all</option>
         <option>light</option>
         <option>medium</option>
         <option>dark</option>
@@ -18,6 +19,7 @@
     <label for="coffee-search">Coffee</label>
     <input type="text" id="coffee-search" onkeyup="searchCoffee()">
     <input id="submit" type="submit"/>
+
 </form>
 
 <div class="css-grid-table" id="table">
@@ -26,6 +28,7 @@
         <div>NAME</div>
         <div>ROAST</div>
     </div>
+<!-- -->
     <div id="coffees" class="css-grid-table-body">
         <!-- JS Inserts Table Data Here-->
     </div>

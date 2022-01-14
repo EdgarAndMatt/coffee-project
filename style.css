@@ -1,12 +1,12 @@
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
-}
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    margin: 15px 0;*/
+/*}*/
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
-}
+/*td, th {*/
+/*    border: 1px solid black;*/
+/*    padding: 5px 10px;*/
+/*}*/
 
 .css-grid-table,
 .css-grid-table-header,
@@ -15,7 +15,7 @@ td, th {
 }
 
 .css-grid-table {
-    grid-template-rows: 24px 72px;
+    grid-template-rows: auto auto;
     width: 80%;
 }
 

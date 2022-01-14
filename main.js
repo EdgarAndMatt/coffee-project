@@ -1,12 +1,12 @@
 "use strict"
-
+// Adds div-table to html
 function renderCoffee(coffee) {
     let html = '<div class="hidden">' + coffee.id + '</div>';
     html += '<div class="coffee-name">' + coffee.name + '</div>';
     html += '<div>' + coffee.roast + '</div>';
     return html;
 }
-
+// Adds coffees to div-table
 function renderCoffees(coffees) {
     let html = '';
     for(let i = 0; i < coffees.length; i++) {
@@ -18,39 +18,32 @@ function renderCoffees(coffees) {
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     let selectedRoast = roastSelection.value;
-    // let searchCoffee = searchedCoffee.value;
     let filteredCoffees = [];
     coffees.forEach(function(coffee) {
         if (coffee.roast === selectedRoast){
+            filteredCoffees.push(coffee);
+        // Select all roasts
+        } else if (roastSelection.value === "all") {
             filteredCoffees.push(coffee);
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
+
+// Live search function
+let searchInput = document.querySelector('#coffee-search');
 function searchCoffee() {
-    // Declare variables
-    let input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("coffee-search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table");
-    tr = table.getElementById("coffees");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByClassName("coffee-name")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+    let filter = searchInput.value.toUpperCase();
+    let filteredCoffees = [];
+    console.log(filter); // TEST LOG
+    coffees.forEach(function(coffee) {
+        if (coffee.name.toUpperCase().includes(filter)) {
+            filteredCoffees.push(coffee);
+            console.log(filteredCoffees);
         }
-    }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
 }
-
-
-
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 let coffees = [
@@ -73,8 +66,9 @@ let coffees = [
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
-let searchedCoffee = document.querySelector('#coffee-search')
 
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+
