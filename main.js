@@ -44,6 +44,18 @@ function searchCoffee() {
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
+// let newCoffeeName = document.querySelector('#new-coffee')
+// let newCoffeeRoast = document.querySelector('#which-roast')
+function addNewCoffee(e) {
+     e.preventDefault();
+    let newCoffeeName = document.querySelector('#new-coffee')
+    let newCoffeeRoast = document.querySelector('#which-roast')
+    let newCoffeeProduct = {id: (coffees.length + 1), name: newCoffeeName, roast: newCoffeeRoast,};
+    return coffees.push(newCoffeeProduct);
+}
+
+let submitCoffee = document.getElementById("submitNewCoffee")
+submitCoffee.addEventListener("click", addNewCoffee)
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 let coffees = [
