@@ -7,7 +7,19 @@
 /*    border: 1px solid black;*/
 /*    padding: 5px 10px;*/
 /*}*/
+body {
 
+    background-color: #c7ccdb;
+}
+
+.card-top {
+    background-color: #e1e5ee;
+
+}
+
+.card-body-color {
+    /*background-color: ;*/
+}
 .css-grid-table,
 .css-grid-table-header,
 .css-grid-table-body {

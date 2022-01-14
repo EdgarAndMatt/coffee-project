@@ -3,8 +3,8 @@
 // Adds div-table to html
 function renderCoffee(coffee) {
     let html = '<div class="hidden">' + coffee.id + '</div>';
-    html += '<div class="coffee-name">' + coffee.name + '</div>';
-    html += '<div>' + coffee.roast + '</div>';
+    html += '<div class="coffee-name col-6">' + coffee.name + '</div>';
+    html += '<div class="col-6">' + coffee.roast + '</div>';
     return html;
 }
 
@@ -62,6 +62,7 @@ function addNewCoffee(newCoffeeProduct) {
     let addNewRoast = newCoffeeRoast.value.toString();
     newCoffeeProduct = {id: addNewID, name: addNewName, roast: addNewRoast,};
     coffees.push(newCoffeeProduct);
+    localStorage.setItem('newCoffee', JSON.stringify(newCoffeeProduct));
     tbody.innerHTML = renderCoffees(coffees);
 }
 
@@ -86,6 +87,10 @@ let coffees = [
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
+//added local storage to store new coffee add atm only stores last coffee added
+let addedCoffees = localStorage.getItem('newCoffee');
+ let addedCoffees2 = JSON.parse(addedCoffees)
+coffees.push(addedCoffees2);
 
 tbody.innerHTML = renderCoffees(coffees);
 
