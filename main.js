@@ -88,9 +88,9 @@ let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
 //added local storage to store new coffee add atm only stores last coffee added
-let addedCoffees = localStorage.getItem('newCoffee');
- let addedCoffees2 = JSON.parse(addedCoffees)
-coffees.push(addedCoffees2);
+let addedCoffees = JSON.parse(localStorage.getItem('newCoffee'));
+
+coffees.push(addedCoffees);
 
 tbody.innerHTML = renderCoffees(coffees);
 
